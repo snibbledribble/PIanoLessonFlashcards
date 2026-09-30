@@ -46,6 +46,22 @@
   letter-spacing: 0.5px;
 }
 
+.hint-toggle-btn {
+  background: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hint-toggle-btn:hover {
+  background-color: rgba(212, 175, 55, 0.2);
+}
+
 .header-divider {
   width: 100%;
   height: 2px;
@@ -158,7 +174,7 @@
   margin-bottom: 10px;
 }
 
-/* Completion Modal Popup */
+/* Modals Overlay Base */
 .modal-overlay {
   position: absolute;
   top: 0;
@@ -233,6 +249,21 @@
 .retry-btn:hover {
   background-color: #f1c40f;
   transform: scale(1.02);
+}
+
+/* Hint Modal Custom Card & Image */
+.modal-card.hint-card {
+  width: 90%;
+  padding: 16px;
+  background-color: #1a1a1a;
+}
+
+.hint-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #444;
 }
 
 @keyframes fadeIn {

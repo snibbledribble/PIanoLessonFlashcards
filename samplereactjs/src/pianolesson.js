@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import StaffCard from './components/StaffCard';
 import OptionButton from './components/OptionButton';
 import QuizCompleteModal from './components/QuizCompleteModal';
+import HintModal from './components/HintModal';
 import './PianoLesson.css';
 
 const QUIZ_QUESTIONS = [
@@ -25,6 +26,7 @@ export default function PianoLesson() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isFlipping, setIsFlipping] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showHint, setShowHint] = useState(false);
 
   const currentQuestion = QUIZ_QUESTIONS[currentIndex];
 
@@ -64,6 +66,7 @@ export default function PianoLesson() {
     setSelectedOption(null);
     setIsFlipping(false);
     setShowModal(false);
+    setShowHint(false);
   };
 
   return (
@@ -74,11 +77,14 @@ export default function PianoLesson() {
           <span className="question-count">
             Question {currentIndex + 1}/{QUIZ_QUESTIONS.length}
           </span>
+          <button type="button" className="hint-toggle-btn" onClick={() => setShowHint(true)}>
+            💡 HINT
+          </button>
           <span className="score-display">SCORE: {score}</span>
         </div>
         <div className="header-divider"></div>
 
-        {/* Main Flashcard Content */}
+        {/* Content Body */}
         <main className="quiz-content">
           <p className="instruction-text">What note is this?</p>
 
@@ -103,6 +109,9 @@ export default function PianoLesson() {
 
           <p className="footer-prompt">TAP THE CORRECT NOTE</p>
         </main>
+
+        {/* Overlay Modals */}
+        {showHint && <HintModal onClose={() => setShowHint(false)} />}
 
         {showModal && (
           <QuizCompleteModal
